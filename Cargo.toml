@@ -1,0 +1,7 @@
+[package]
+name = "hello"
+version = "0.1.0"
+authors = ["Yang Hongbo <465558+sprhawk@users.noreply.github.com>"]
+publish = false
+
+[dependencies]
