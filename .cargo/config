@@ -1,8 +1,9 @@
 [target.armv7-unknown-linux-gnueabihf]
 linker = "/home/hongbo/Developer/build-disk/rk-none/sysroots/x86_64-rksdk-linux/usr/bin/arm-rk-linux-gnueabi/arm-rk-linux-gnueabi-gcc"
 rustflags = [
-    "-C", "link-arg=--sysroot=/home/hongbo/Developer/build-disk/rk-none/sysroots/cortexa17hf-neon-vfpv4-rk-linux-gnueabi",
-    "-C", "link-arg=-Wl,--dynamic-linker=/lib/ld-linux-armhf.so.3",
+    "-C", """link-args=--sysroot=/home/hongbo/Developer/build-disk/rk-none/sysroots/cortexa17hf-neon-vfpv4-rk-linux-gnueabi
+    -Wl,--dynamic-linker=/lib/ld-linux-armhf.so.3
+    -I/home/hongbo/Developer/build-disk/rk-none/sysroots/cortexa17hf-neon-vfpv4-rk-linux-gnueabi/usr/include""",
     ]
 
 [build]
