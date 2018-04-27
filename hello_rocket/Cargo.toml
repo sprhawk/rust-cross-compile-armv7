@@ -3,5 +3,5 @@ name = "hello_world"
 version = "0.0.0"
 
 [dependencies]
-rocket = "*"
-rocket_codegen = "*"
+rocket = "0.3.9"
+rocket_codegen = "0.3.9"
