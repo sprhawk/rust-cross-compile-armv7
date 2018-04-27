@@ -7,8 +7,8 @@ I'm trying to coss-compile rust app for Linux on ARMv7 ([RK3288](http://opensour
 
 Two "Hello world" samples:
 
-1. [hello world](hello_console/Readme.md) for console (print 'Hello World' in console)
-2. [hello world](hello_rocket/Readme.md) for [Rocket.rs](https://rocket.rs/)
+1. [hello world](hello_console/) for console (print 'Hello World' in console)
+2. [hello world](hello_rocket/) for [Rocket.rs](https://rocket.rs/)
 
 setup .cargo/config inside project or globally (~/.cargo/config) as:
 
