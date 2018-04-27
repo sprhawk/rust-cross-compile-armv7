@@ -12,5 +12,5 @@ rustup target add --toolchain nightly armv7-unknown-linux-gnueabihf
 setup [.cargo/config](../Readme.md).
 
 ```
-rustup run nightly cargo build --target armv7-unknown-linux-gnueabihf
+./build-armv7.sh
 ```
