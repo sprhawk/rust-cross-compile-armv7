@@ -87,7 +87,7 @@ fn main() {
         println!("Vulkan Debug: {:?}", msg.description);
     }).ok();
 
-    // print_vk_info(&instance);
+    print_vk_info(&instance);
 
     let physical_device = PhysicalDevice::enumerate(&instance)
         .next()
