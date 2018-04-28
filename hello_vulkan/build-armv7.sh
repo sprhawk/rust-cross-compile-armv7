@@ -6,4 +6,4 @@ export CFLAGS_armv7_unknown_linux_gnueabihf="-mcpu=cortex-a17 -mfloat-abi=hard -
 export CARGO_TARGET="armv7-unknown-linux-gnueabihf"
 export CARGO_HOST="x86_64-unknown-linux-gnueabi"
 
-rustup run nightly cargo build --target armv7-unknown-linux-gnueabihf
+rustup run nightly cargo build --features="fbdev" ---target armv7-unknown-linux-gnueabihf
