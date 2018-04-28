@@ -5,12 +5,19 @@ Notes
 
 I'm trying to coss-compile rust app for Linux on ARMv7 ([RK3288](http://opensource.rock-chips.com/wiki_RK3288)) which is built with [Yocto](https://www.yoctoproject.org/)
 
-Two "Hello world" samples:
+Three "Hello world" samples:
 
 1. [hello world](hello_console/) for console (print 'Hello World' in console)
-2. [hello world](hello_rocket/) for [Rocket.rs](https://rocket.rs/)
+2. [hello rocket](hello_rocket/) for [Rocket.rs](https://rocket.rs/)
+3. [hello vulkan](hello_vulkan/) for [Vulkano](https://vulkano.rs/)
 
-setup .cargo/config inside project or globally (~/.cargo/config) as:
+First you need to add target:
+
+```
+rustup target add armv7-unknown-linux-gnueabihf
+```
+
+Then setup .cargo/config inside project or globally (~/.cargo/config) as:
 
 ```
 [target.armv7-unknown-linux-gnueabihf]
