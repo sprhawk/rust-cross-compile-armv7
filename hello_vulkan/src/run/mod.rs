@@ -35,6 +35,8 @@ use vulkano::pipeline::GraphicsPipeline;
 
 use vulkano::swapchain;
 
+use vulkano::image::traits::ImageAccess;
+
 use self::shaders::Vertex;
 
 use self::shaders::default_fragment_shader::Shader as FragmentShader;
@@ -67,10 +69,6 @@ pub fn create_vk_instance() -> Arc<Instance> {
 }
 
 fn create_vk_struct() -> Arc<VulkanStruct> {
-    #[cfg(feature = "win")]
-    let instance = create_vk_instance();
-
-    #[cfg(feature = "fbdev")]
     let instance = create_vk_instance();
 
     let _callback = DebugCallback::errors_and_warnings(&instance, |msg| {
@@ -122,9 +120,15 @@ fn create_vk_struct() -> Arc<VulkanStruct> {
 pub fn run() {
     let vulkan_obj = create_vk_struct();
 
+#[cfg(feature="fbdev")]
     info::print_all_displays(vulkan_obj.device.physical_device());
+#[cfg(feature="fbdev")]
     info::print_all_display_plane(vulkan_obj.device.physical_device());
 
+#[cfg(feature = "win")]
+    let (swap_chain, images, mut events_loop) = create_swapchain(vulkan_obj.clone()).unwrap();
+
+#[cfg(feature = "fbdev")]
     let (swap_chain, images) = create_swapchain(vulkan_obj.clone()).unwrap();
 
     /*
@@ -159,10 +163,11 @@ pub fn run() {
         color: {
             load: Clear,
             store: Store,
-            // format: Format::B8G8R8A8Srgb,
+            format: image.format(),
+            // format: Format::B8G8R8A8Srgb, // for Linux Intel GPU
             // R8G8B8A8Unorm is not supported under Linux Intel driver
-            // format: Format::R8G8B8A8Unorm,
-            format: Format::B8G8R8A8Unorm,
+            // format: Format::R8G8B8A8Unorm, // for Windows Intel GPU
+            // format: Format::B8G8R8A8Unorm, // for rk3288 ARM Mali T-76x fbdev
             samples: 1,
         }
     },
